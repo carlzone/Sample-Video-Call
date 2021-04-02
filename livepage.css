@@ -1,0 +1,81 @@
+/*|Video Box Style|*/
+video {
+  background: var(--cNeutralDark);
+  border-radius: 10px;
+}
+video#localVideo {
+  width: 90vw;
+  height: 90vh;
+}
+video#localVideo.twoView {
+  width: 40vw;
+  height: 50vh;
+}
+video#guestVideo {
+  width: 40vw;
+  height: 50vh;
+}
+.vholder {
+  position: relative;
+  display: inline-block;
+  background: var(--cSub);
+  padding: 2px;
+  z-index: 2;
+  border-radius: 10px;
+}
+.vholder-guest {
+  position: relative;
+  display: inline-block;
+  background: var(--cSub);
+  padding: 2px;
+  z-index: 1;
+}
+.hideVGuest {
+  display: none;
+}
+@media screen and (max-width: 520px) {
+  video#localVideo {
+    width: 90vw;
+    height: 90vh;
+  }
+  video#guestVideo {
+    width: 92vw;
+    height: 92vh;
+  }
+  .vholder {
+    position: relative;
+  }
+  video#localVideo.twoView {
+    width: 30vw;
+    height: 30vw;
+  }
+  .vholder.twoView {
+    position: absolute;
+    display: inline-block;
+    left: 3vw;
+    top: 3vw;
+  }
+}
+
+/*|CHAT BOX|*/
+.chat-container {
+  flex-direction: column;
+  min-width: 800px;
+}
+.connection-group {
+  min-width: 320px;
+  max-width: 1024px;
+  margin: 5px 0 5px 0;
+}
+.message-to-send {
+  flex-direction: column;
+  min-width: 320px;
+  max-width: 600px;
+  background: #eeeeee;
+  margin: 5px 0 5px 0;
+}
+.message-received {
+  background: #000000;
+  width: 800px;
+  height: 400px;
+}

@@ -1,0 +1,165 @@
+/*|GLOBAL VARIABLES HERE|*/
+:root {
+  --cMain: #d2691e;
+  --cSub: #00a47c;
+  --cMin: #6876ff;
+
+  --cNeutralLight: #ffffff;
+  --cNeutralDark: #000000;
+  --cNeutralMid: #777777;
+
+  --cTransMid: rgba(100, 100, 100, 0.5);
+}
+/*|GLOBAL VARIABLES END|*/
+
+/*|CONTAINERS|*/
+body {
+  background: var(--cNeutralLight);
+  margin: 0;
+  padding: 0;
+}
+.header {
+  width: 100%;
+  background: var(--cMain);
+  margin: 0;
+  padding: 0;
+}
+.body {
+  width: 100%;
+  min-height: 80vh;
+  margin: 0;
+  padding: 0;
+}
+.footer {
+  width: 100%;
+  min-height: 10vh;
+  background: var(--cMin);
+  margin: 0;
+  padding: 0;
+}
+.main-container {
+  background: var(--cNeutralLight);
+  min-height: 75vh;
+  padding: 10px;
+}
+.text-container {
+  background: var(--cNeutralLight);
+  margin: 0;
+  padding: 10px;
+}
+.obj-container {
+  background: var(--cSub);
+  margin: 0;
+  padding: 10px;
+  border-radius: 5px;
+}
+.btn-container {
+  background: var(--cMin);
+}
+
+.flex-center-all {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+}
+
+.flex-left-all {
+  display: flex;
+  justify-content: start;
+  align-items: start;
+  align-content: start;
+}
+
+/*|CONTAINERS END|*/
+
+/*|TEXT|*/
+.navbar-brand h3 {
+  font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+  letter-spacing: 0.02em;
+}
+.text-header {
+  color: var(--cMain);
+  font-weight: bolder;
+  margin: 0;
+  padding: 0 0 5px 0;
+}
+.text-button {
+  color: var(--cNeutralLight);
+  font-weight: bold;
+}
+.text-label {
+  color: var(--cNeutralLight);
+  font-weight: bold;
+  margin: 0;
+  padding: 0 5px 5px 5px;
+}
+p {
+  color: var(--cNeutralDark);
+  margin: 0;
+  padding: 0;
+}
+p.size-sm {
+  font-size: 1em;
+}
+p.size-md {
+  font-size: 1.3em;
+}
+p.size-lg {
+  font-size: 1.6em;
+}
+/*|TEXT END|*/
+
+/*|LINK|*/
+.link {
+  font-weight: bolder;
+  color: var(--cNeutralLight);
+}
+.link:hover {
+  color: var(--cNeutralDark);
+  text-decoration: none;
+}
+.box-link {
+  background: var(--cMin);
+  color: var(--cNeutralDark);
+}
+/*|LINK END|*/
+
+/*|BUTTON|*/
+.btn-obj {
+  background: var(--cMin);
+  color: var(--cNeutralLight);
+  font-weight: bolder;
+  box-shadow: 1px 1px 4px var(--cNeutralDark);
+}
+.btn-obj:hover {
+  color: var(--cLink);
+  box-shadow: 1px 1px 10px var(--cNeutralDark);
+}
+.btn-obj:active {
+  color: var(--cHighlight);
+  box-shadow: 0 0 10px var(--cNeutralMid);
+}
+/*|BUTTON END|*/
+/*|IMAGE STYLE|*/
+img {
+  object-fit: cover;
+  object-position: center;
+}
+/*|IMAGE STYLE END|*/
+
+/*|Go to Top Button Style|*/
+.go2top {
+  position: fixed;
+  display: flex;
+  height: 40px;
+  bottom: 80px;
+  right: 25px;
+  opacity: 0.5;
+}
+.go2top:hover {
+  opacity: 0.5;
+}
+.go2top button {
+  border-radius: 25px;
+}
