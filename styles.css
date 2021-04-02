@@ -20,19 +20,20 @@ body {
 }
 .header {
   width: 100%;
+  min-height: 10vh;
   background: var(--cMain);
   margin: 0;
   padding: 0;
 }
 .body {
   width: 100%;
-  min-height: 80vh;
+  min-height: 85vh;
   margin: 0;
   padding: 0;
 }
 .footer {
   width: 100%;
-  min-height: 10vh;
+  min-height: 5vh;
   background: var(--cMin);
   margin: 0;
   padding: 0;
@@ -79,7 +80,7 @@ body {
   letter-spacing: 0.02em;
 }
 .text-header {
-  color: var(--cMain);
+  color: var(--cMin);
   font-weight: bolder;
   margin: 0;
   padding: 0 0 5px 0;
