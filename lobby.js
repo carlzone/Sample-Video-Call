@@ -1,5 +1,5 @@
 var server = new Ably.Realtime("FdWPMQ.SWN8ug:PggMzYgwya45kdX7");
-var channel = server.channels.get("VCallRoom", { params: { rewind: "50" } });
+var channel = server.channels.get("VCallLobby", { params: { rewind: "50" } });
 
 $(document).ready(function() {
   channel.subscribe("roomList", function(msg) {
