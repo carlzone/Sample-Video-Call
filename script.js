@@ -6,14 +6,13 @@ server.connection.on("connected", function() {
   console.log("Server Connected\n");
   $("#roomList").val("Server Connected\n");
   user = "user-" + (Math.random() * 1000).toFixed(0).toString();
-  room = $("#roomID").val();
-  console.log("Site Hash: ", location.hash);
+  room = location.hash;
 
-  //Guest ID Display
+  //Connect to new guest
   channel.subscribe(room + "-block", function(msg) {
     $("#roomList").val($("#roomList").val() + msg.data + "\n");
     if (msg.data != "ID: " + user) {
-      $("#roomName").val(msg.data.replaceAll("ID: ", ""));
+      connectToGuest(msg.data.replaceAll("ID: ", ""));
       $("#connectRoom").attr("disabled", false);
     }
     console.log(msg.data);
@@ -92,6 +91,13 @@ var room;
 var isStreaming = false;
 
 //Host Event
+function connectToGuest(receiver) {
+  peerConnection(true, localStream);
+  channel.publish(receiver + "-Channel", user);
+
+  $("#connectRoom").attr("disabled", true);
+  $("#roomName").attr("disabled", true);
+}
 $(document).on("click", "#connectRoom", function() {
   receiver = $("#roomName").val();
 
