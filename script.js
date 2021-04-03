@@ -139,7 +139,6 @@ function connect() {
 
 //On peer closed
 function close() {
-  $("#roonList").val($("#roonList").val() + "Peer Connection Closed\n");
   peerCon.destroy();
 
   $(".vholder").removeClass("twoView");
@@ -151,7 +150,3 @@ function close() {
 function error(error) {
   console.log("Peer Connection Error: ", error);
 }
-
-document.addEventListener("beforeunload", function() {
-  console.log("closing");
-});
