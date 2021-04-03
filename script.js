@@ -2,20 +2,25 @@
 var server = new Ably.Realtime("FdWPMQ.SWN8ug:PggMzYgwya45kdX7");
 var channel = server.channels.get("VCallRoom");
 
+//ID
+const user = "user-" + (Math.random() * 1000).toFixed(0).toString();
+var receiver;
+
+//Server Connected
 server.connection.on("connected", function() {
   console.log("Server Connected\n");
   $("#roomList").val("Server Connected\n");
   room = location.hash;
 
   if (room != "") {
-    console.log("Connecting to Peer");
     //Connect to new guest
     channel.subscribe(room + "-block", function(msg) {
       if (msg.data != user) {
+        console.log("Connecting to Guest");
         connectToGuest(msg.data);
         $("#connectRoom").attr("disabled", false);
+        console.log("FROM: ", msg.data);
       }
-      console.log("User: ", msg.data);
     });
 
     //User Signal Connection
@@ -28,7 +33,7 @@ server.connection.on("connected", function() {
 
     //Received Video Stream from Host
     channel.subscribe(user + "-Channel", function(msg) {
-      console.log("Connect to ", msg.data);
+      console.log("Host: ", msg.data);
       receiver = msg.data;
 
       peerConnection(false, localStream);
@@ -44,17 +49,12 @@ server.connection.on("connected", function() {
   }
 });
 
-//ID
-const user = "user-" + (Math.random() * 1000).toFixed(0).toString();
-var receiver;
-
 //Video Constraints
 var hasCamera = false;
 var hasMic = false;
 
 navigator.mediaDevices.enumerateDevices().then(function(devices) {
   devices.forEach(device => {
-    console.log(device.kind);
     if (device.kind == "audioinput") {
       hasMic = true;
     }
@@ -65,7 +65,7 @@ navigator.mediaDevices.enumerateDevices().then(function(devices) {
 });
 const constraints = {
   video: {
-    aspectRatio: 1
+    aspectRatio: 1.3333333
   },
   audio: true
 };
@@ -93,7 +93,7 @@ var isStreaming = false;
 //Host Event
 function connectToGuest(receiver) {
   console.log("Connecting Receiver: ", receiver);
-  console.log("Connecting User: ", receiver);
+  console.log("Connecting User: ", user);
   peerConnection(true, localStream);
   channel.publish(receiver + "-Channel", user);
 

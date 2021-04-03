@@ -8,12 +8,12 @@ video#localVideo {
   height: 95vh;
 }
 video#localVideo.twoView {
-  width: 40vw;
-  height: 50vh;
+  width: 45vw;
+  height: 95vh;
 }
 video#guestVideo {
-  width: 40vw;
-  height: 50vh;
+  width: 45vw;
+  height: 95vh;
 }
 .vholder {
   position: relative;
