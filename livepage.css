@@ -4,8 +4,8 @@ video {
   border-radius: 10px;
 }
 video#localVideo {
-  width: 90vw;
-  height: 95vh;
+  width: 96vw;
+  height: 97vh;
 }
 video#localVideo.twoView {
   width: 20vw;

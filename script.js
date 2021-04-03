@@ -65,6 +65,15 @@ const constraints = {
   audio: true
 };
 var localStream;
+getConnectedDevices();
+async function getConnectedDevices() {
+  var devices = await navigator.mediaDevices.enumerateDevices();
+  console.log(devices);
+}
+// navigator.mediaDevices.addEventListener("devicechange", event => {
+//   var cameraList = getConnectedDevices("videoinput");
+//   updateCameraList(cameraList);
+// });
 navigator.mediaDevices
   .getUserMedia(constraints)
   .then(getStream)
