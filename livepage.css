@@ -4,12 +4,12 @@ video {
   border-radius: 10px;
 }
 video#localVideo {
-  width: 95vw;
+  width: 90vw;
   height: 95vh;
 }
 video#localVideo.twoView {
-  width: 45vw;
-  height: 95vh;
+  width: 20vw;
+  height: 20vw;
 }
 .vholder {
   position: relative;
@@ -58,27 +58,4 @@ video#guestVideo {
     left: 3vw;
     top: 3vw;
   }
-}
-
-/*|CHAT BOX|*/
-.chat-container {
-  flex-direction: column;
-  min-width: 800px;
-}
-.connection-group {
-  min-width: 320px;
-  max-width: 1024px;
-  margin: 5px 0 5px 0;
-}
-.message-to-send {
-  flex-direction: column;
-  min-width: 320px;
-  max-width: 600px;
-  background: #eeeeee;
-  margin: 5px 0 5px 0;
-}
-.message-received {
-  background: #000000;
-  width: 800px;
-  height: 400px;
 }

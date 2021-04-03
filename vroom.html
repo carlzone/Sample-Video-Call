@@ -11,30 +11,11 @@
 <body>
   <div class="body flex-center-all flex-column">
     <div id="videoContainer" class="main-container">
-      <div class="vholder flex-center-all m-2 ">
+      <div class="vholder flex-center-all">
         <video id="localVideo" autoplay muted></video>
       </div>
       <div class="vholder-guest hideVGuest">
         <video id="guestVideo" autoplay></video>
-      </div>
-    </div>
-
-    <div class="container-lg obj-container flex-center-all flex-column mb-5">
-      <div class="connection-group">
-        <div class="input-group">
-          <div class="input-group-prepend">
-            <span class="input-group-text">Connection</span>
-          </div>
-          <input type="hidden" value="video-chat-room">
-          <input class="form-control" type="text" id="roomName" placeholder="Waiting for Guest" disabled=true >
-          <div class="input-group-append">
-            <button id="connectRoom" class="btn btn-success" disabled=true>Connect</button>
-          </div>
-        </div>
-      </div>
-      <div class="text-container container-fluid">
-        <label for="#roomList">Rooms Open</label>
-        <textarea id="roomList" rows=5 class="form-control" disabled=true></textarea>
       </div>
     </div>
   </div>

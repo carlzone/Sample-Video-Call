@@ -101,15 +101,6 @@ function connectToGuest(receiver) {
   $("#connectRoom").attr("disabled", true);
   $("#roomName").attr("disabled", true);
 }
-// $(document).on("click", "#connectRoom", function() {
-//   receiver = $("#roomName").val();
-
-//   peerConnection(true, localStream);
-//   channel.publish(receiver + "-Channel", user);
-
-//   $("#connectRoom").attr("disabled", true);
-//   $("#roomName").attr("disabled", true);
-// });
 
 //Create Simple Peer Connection
 function peerConnection(isHost, stream) {
