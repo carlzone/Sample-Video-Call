@@ -11,15 +11,22 @@ video#localVideo.twoView {
   width: 45vw;
   height: 95vh;
 }
-video#guestVideo {
-  width: 45vw;
-  height: 95vh;
-}
 .vholder {
   position: relative;
   display: inline-block;
   z-index: 2;
   border-radius: 10px;
+}
+.vholder.twoView {
+  position: absolute;
+  display: inline-block;
+  left: 3vw;
+  top: 3vw;
+}
+
+video#guestVideo {
+  width: 95vw;
+  height: 95vh;
 }
 .vholder-guest {
   position: relative;
