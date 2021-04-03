@@ -151,3 +151,7 @@ function close() {
 function error(error) {
   console.log("Peer Connection Error: ", error);
 }
+
+document.addEventListener("beforeunload", function() {
+  alert("Closing");
+});
