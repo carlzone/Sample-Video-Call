@@ -7,6 +7,7 @@ server.connection.on("connected", function() {
   $("#roomList").val("Server Connected\n");
   user = "user-" + (Math.random() * 1000).toFixed(0).toString();
   room = $("#roomID").val();
+  console.log("Site Hash: ", location.hash);
 
   //Guest ID Display
   channel.subscribe(room + "-block", function(msg) {
