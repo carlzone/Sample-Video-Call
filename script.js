@@ -5,17 +5,17 @@ var channel = server.channels.get("VCallTest");
 server.connection.on("connected", function() {
   console.log("Server Connected\n");
   $("#roomList").val("Server Connected\n");
-  user = "user-" + (Math.random() * 1000).toFixed(0).toString();
   room = location.hash;
 
   if (room != "") {
+    console.log("Connecting to Peer");
     //Connect to new guest
     channel.subscribe(room + "-block", function(msg) {
       if (msg.data != user) {
         connectToGuest(msg.data);
         $("#connectRoom").attr("disabled", false);
       }
-      console.log(msg.data);
+      console.log("User: ", msg.data);
     });
 
     //User Signal Connection
@@ -28,8 +28,7 @@ server.connection.on("connected", function() {
 
     //Received Video Stream from Host
     channel.subscribe(user + "-Channel", function(msg) {
-      $("#roomList").val($("#roomList").val() + "Connect: " + msg.data + "\n");
-      console.log("Connect: ", msg.data);
+      console.log("Connect to ", msg.data);
       receiver = msg.data;
 
       peerConnection(false, localStream);
@@ -46,7 +45,7 @@ server.connection.on("connected", function() {
 });
 
 //ID
-var user;
+const user = "user-" + (Math.random() * 1000).toFixed(0).toString();
 var receiver;
 
 //Video Constraints
@@ -93,6 +92,8 @@ var isStreaming = false;
 
 //Host Event
 function connectToGuest(receiver) {
+  console.log("Connecting Receiver: ", receiver);
+  console.log("Connecting User: ", receiver);
   peerConnection(true, localStream);
   channel.publish(receiver + "-Channel", user);
 
