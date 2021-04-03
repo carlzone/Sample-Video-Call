@@ -18,7 +18,7 @@ server.connection.on("connected", function() {
     console.log(msg.data);
   });
 
-  //User ID Display
+  //Apply for a connection
   channel.publish(room + "-block", "ID: " + user);
   console.log("My ID: ", user);
 
@@ -65,7 +65,7 @@ navigator.mediaDevices.enumerateDevices().then(function(devices) {
 });
 const constraints = {
   video: {
-    aspectRatio: 1.3
+    aspectRatio: 1
   },
   audio: true
 };
@@ -74,7 +74,7 @@ navigator.mediaDevices
   .getUserMedia(constraints)
   .then(getStream)
   .catch(error => {
-    console.log(error);
+    console.log("Media ERROR", error);
   });
 async function getStream(stream) {
   localStream = await stream;
@@ -98,15 +98,15 @@ function connectToGuest(receiver) {
   $("#connectRoom").attr("disabled", true);
   $("#roomName").attr("disabled", true);
 }
-$(document).on("click", "#connectRoom", function() {
-  receiver = $("#roomName").val();
+// $(document).on("click", "#connectRoom", function() {
+//   receiver = $("#roomName").val();
 
-  peerConnection(true, localStream);
-  channel.publish(receiver + "-Channel", user);
+//   peerConnection(true, localStream);
+//   channel.publish(receiver + "-Channel", user);
 
-  $("#connectRoom").attr("disabled", true);
-  $("#roomName").attr("disabled", true);
-});
+//   $("#connectRoom").attr("disabled", true);
+//   $("#roomName").attr("disabled", true);
+// });
 
 //Create Simple Peer Connection
 function peerConnection(isHost, stream) {
