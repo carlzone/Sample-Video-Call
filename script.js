@@ -17,6 +17,7 @@ server.connection.on("connected", function() {
     channel.subscribe(room + "-block", function(msg) {
       if (msg.data != user) {
         console.log("Connecting to Guest");
+        receiver = msg.data;
         connectToGuest(msg.data);
         $("#connectRoom").attr("disabled", false);
         console.log("FROM: ", msg.data);
@@ -26,7 +27,7 @@ server.connection.on("connected", function() {
     //User Signal Connection
     channel.subscribe("signal-" + user, function(msg) {
       if (peerCon) {
-        console.log("Receiver Signal signal-", user);
+        console.log("Guest Signal signal-", user);
         peerCon.signal(msg.data.signal);
       }
     });
