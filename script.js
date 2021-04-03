@@ -61,9 +61,7 @@ navigator.mediaDevices.enumerateDevices().then(function(devices) {
   });
 });
 const constraints = {
-  video: {
-    aspectRatio: 1.3333333
-  },
+  video: true,
   audio: true
 };
 var localStream;

@@ -40,8 +40,9 @@ video#guestVideo {
 #backlobby {
   position: absolute;
   z-index: 3;
-  left: 20px;
-  top: 20px;
+  left: 30px;
+  top: 30px;
+  opacity: 0.3;
 }
 
 @media screen and (max-width: 520px) {
