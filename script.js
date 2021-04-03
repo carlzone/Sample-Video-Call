@@ -1,6 +1,6 @@
 //Signal Server
 var server = new Ably.Realtime("FdWPMQ.SWN8ug:PggMzYgwya45kdX7");
-var channel = server.channels.get("VCallTest");
+var channel = server.channels.get("VCallRoom");
 
 server.connection.on("connected", function() {
   console.log("Server Connected\n");
