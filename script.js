@@ -153,5 +153,5 @@ function error(error) {
 }
 
 document.addEventListener("beforeunload", function() {
-  alert("Closing");
+
 });
