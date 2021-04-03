@@ -3,8 +3,7 @@ var channel = server.channels.get("VCallRoom", { params: { rewind: "50" } });
 
 $(document).ready(function() {
   channel.subscribe("roomList", function(msg) {
-    var room = "room-" + (Math.random() * 1000).toFixed(0).toString();
-
+    var room = msg.data;
     $("#roomList").append(
       '<a href="./vroom.html#' +
         room +
@@ -15,6 +14,7 @@ $(document).ready(function() {
   });
 
   $(document).on("click", "#createRoom", function() {
-    channel.publish("roomList", room.toUpperCase());
+    var room = "room-" + (Math.random() * 1000).toFixed(0).toString();
+    channel.publish("roomList", room);
   });
 });
