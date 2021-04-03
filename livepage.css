@@ -36,6 +36,14 @@ video#guestVideo {
 .hideVGuest {
   display: none;
 }
+
+#backlobby {
+  position: absolute;
+  z-index: 3;
+  left: 20px;
+  top: 20px;
+}
+
 @media screen and (max-width: 520px) {
   video#localVideo {
     width: 95vw;
