@@ -9,7 +9,6 @@ var receiver;
 //Server Connected
 server.connection.on("connected", function() {
   console.log("Server Connected\n");
-  $("#roomList").val("Server Connected\n");
   room = location.hash;
 
   if (room != "") {
@@ -17,9 +16,10 @@ server.connection.on("connected", function() {
     channel.subscribe(room + "-block", function(msg) {
       if (msg.data != user) {
         console.log("Connecting to Guest");
+
         receiver = msg.data;
         connectToGuest(msg.data);
-        $("#connectRoom").attr("disabled", false);
+
         console.log("FROM: ", msg.data);
       }
     });
@@ -38,10 +38,6 @@ server.connection.on("connected", function() {
       receiver = msg.data;
 
       peerConnection(false, localStream);
-      $("#roomName").val(msg.data);
-
-      $("#connectRoom").attr("disabled", true);
-      $("#roomName").attr("disabled", true);
     });
 
     //Apply for a connection
@@ -97,9 +93,6 @@ function connectToGuest(receiver) {
   console.log("Connecting User: ", user);
   peerConnection(true, localStream);
   channel.publish(receiver + "-Channel", user);
-
-  $("#connectRoom").attr("disabled", true);
-  $("#roomName").attr("disabled", true);
 }
 
 //Create Simple Peer Connection
@@ -152,13 +145,9 @@ function close() {
   $(".vholder").removeClass("twoView");
   $("#localVideo").removeClass("twoView");
   $(".vholder-guest").addClass("hideVGuest");
-
-  $("#connectRoom").attr("disabled", false);
-  $("#roomName").val("");
 }
 
 //Where error is incounter
 function error(error) {
-  $("#roonList").val($("#roonList").val() + "Peer Connectiont Error\n");
   console.log("Peer Connection Error: ", error);
 }
