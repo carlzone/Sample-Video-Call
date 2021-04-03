@@ -8,40 +8,41 @@ server.connection.on("connected", function() {
   user = "user-" + (Math.random() * 1000).toFixed(0).toString();
   room = location.hash;
 
-  //Connect to new guest
-  channel.subscribe(room + "-block", function(msg) {
-    $("#roomList").val($("#roomList").val() + msg.data + "\n");
-    if (msg.data != "ID: " + user) {
-      connectToGuest(msg.data.replaceAll("ID: ", ""));
-      $("#connectRoom").attr("disabled", false);
-    }
-    console.log(msg.data);
-  });
+  if (room != "") {
+    //Connect to new guest
+    channel.subscribe(room + "-block", function(msg) {
+      if (msg.data != user) {
+        connectToGuest(msg.data);
+        $("#connectRoom").attr("disabled", false);
+      }
+      console.log(msg.data);
+    });
 
-  //Apply for a connection
-  channel.publish(room + "-block", "ID: " + user);
-  console.log("My ID: ", user);
+    //User Signal Connection
+    channel.subscribe("signal-" + user, function(msg) {
+      if (peerCon) {
+        console.log("Receiver Signal signal-", user);
+        peerCon.signal(msg.data.signal);
+      }
+    });
 
-  //User Signal Connection
-  channel.subscribe("signal-" + user, function(msg) {
-    if (peerCon) {
-      console.log("Receiver Signal signal-", user);
-      peerCon.signal(msg.data.signal);
-    }
-  });
+    //Received Video Stream from Host
+    channel.subscribe(user + "-Channel", function(msg) {
+      $("#roomList").val($("#roomList").val() + "Connect: " + msg.data + "\n");
+      console.log("Connect: ", msg.data);
+      receiver = msg.data;
 
-  //Received Video Stream from Host
-  channel.subscribe(user + "-Channel", function(msg) {
-    $("#roomList").val($("#roomList").val() + "Connect: " + msg.data + "\n");
-    console.log("Connect: ", msg.data);
-    receiver = msg.data;
+      peerConnection(false, localStream);
+      $("#roomName").val(msg.data);
 
-    peerConnection(false, localStream);
-    $("#roomName").val(msg.data);
+      $("#connectRoom").attr("disabled", true);
+      $("#roomName").attr("disabled", true);
+    });
 
-    $("#connectRoom").attr("disabled", true);
-    $("#roomName").attr("disabled", true);
-  });
+    //Apply for a connection
+    channel.publish(room + "-block", user);
+    console.log("My ID: ", user);
+  }
 });
 
 //ID
