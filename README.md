@@ -1,4 +1,4 @@
-# sample-livechat
+# sample-1on1-video-call project
 # LIVE VIDEO CALL
 powered by Ably.com
 
